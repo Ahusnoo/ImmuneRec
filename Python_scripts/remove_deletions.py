@@ -1,13 +1,13 @@
 import pandas as pd
 import os
 
-input_directory = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/Baylor_AFR/missing_var_fixed/'
+input_directory = '/missing_var_fixed/'
 input_directory_list = os.listdir(input_directory)
 
 for GeneClass in input_directory_list:
 	input_pedmapfile_directory = input_directory + GeneClass + '/'
 		
-	output_pedmapfile_directory = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/Baylor_AFR/rm_del/' + GeneClass + '/'
+	output_pedmapfile_directory = '/rm_del/' + GeneClass + '/'
 	
 	input_pedmapfile_list = os.listdir(input_pedmapfile_directory)
 	for input_file_name in input_pedmapfile_list:
@@ -29,12 +29,13 @@ for GeneClass in input_directory_list:
 		
 			Individual_info = input_pedfile_df.iloc[:, 0:6]
 			Individual_info_df = pd.DataFrame(Individual_info)
+#Genotype data starts from column 7 onwards
 			Genotypes = input_pedfile_df.iloc[:, 6:]
-		
-
+			
 			Column_numbers = len(input_mapfile_data)*2
 
 			for i in range (0,Column_numbers,2):
+
 				line_in_map_file = i//2
 				df_column1_index = i
 				df_column2_index = i + 1
@@ -45,6 +46,7 @@ for GeneClass in input_directory_list:
 				genotype_columns = pd.concat([genotype_column1_df,genotype_column2_df],axis='columns')
 				col1_values = genotype_column1.values
 				col2_values = genotype_column2.values
+#add columns to dataframe if '*' (deletion) not in column
 				if '*'  not in col1_values and '*' not in col2_values:
 					new_pedfile_df = pd.concat([Individual_info_df, pd.DataFrame(genotype_columns)], axis='columns')	
 					Individual_info_df = new_pedfile_df
