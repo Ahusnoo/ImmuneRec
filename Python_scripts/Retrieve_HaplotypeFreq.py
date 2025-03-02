@@ -1,10 +1,10 @@
 import os
 
-Input_directory = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/Baylor_AFR/Haploview/Haploview_Outputs/output/'
+Input_directory = '/Haploview_Outputs/output/'
 Gene_class_directory_list = os.listdir(Input_directory)
 for Gene_class_directory in Gene_class_directory_list:
 	Input_file_directory =  Input_directory + Gene_class_directory + '/GABRIELblocks/'
-	Output_file_directory = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/Baylor_AFR/Haploview/Haplotype_Freq/HapFreq_PerGene/' + Gene_class_directory + '/'
+	Output_file_directory = '/HapFreq_PerGene/' + Gene_class_directory + '/'
 	Check_file_directory = Input_directory + Gene_class_directory + '/CHECK/'	
 	Input_files_list = os.listdir(Input_file_directory)
 	for Input_file_name in Input_files_list:
@@ -18,7 +18,6 @@ for Gene_class_directory in Gene_class_directory_list:
 		Output_file.write(Header)
 		Input_file = open(Input_file_location,'r')
 		pop_name = Input_file_name [:12]
-#		pop_name = Input_file_name [:6]
 		find_dot_pos = Input_file_name.find('.')
 		gene_name = Input_file_name[13:find_dot_pos]
 
