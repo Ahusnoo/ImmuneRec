@@ -1,8 +1,8 @@
 import os
 
 #open and read map_file
-input_dir = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/Baylor_AFR/ped_map/'
-output_dir = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/Baylor_AFR/missing_var_fixed/'
+input_dir = '/ped_map/'
+output_dir = '/missing_var_fixed/'
 gene_class_list = os.listdir(input_dir)
 
 for gene_class in gene_class_list:
