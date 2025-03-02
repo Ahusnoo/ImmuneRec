@@ -1,11 +1,12 @@
 import os
-
-Input_directory = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/NonAFR/Haploview/Haploview_Outputs/output/'
+#Create a list of directories, each referring to a particular class of immune receptor genes containing the different Haploview output files
+Input_directory = '/Haploview_Outputs/'
 Gene_class_directory_list = os.listdir(Input_directory)
 for Gene_class_directory in Gene_class_directory_list:
 	Input_file_directory =  Input_directory + Gene_class_directory + '/GABRIELblocks/'
-	Output_file_directory = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/NonAFR/Haploview/Haplotypes/output/' + Gene_class_directory + '/'
+	Output_file_directory = '/Haplotypes/output/' + Gene_class_directory + '/'
 	Check_file_directory = Input_directory + Gene_class_directory + '/CHECK/'	
+#Create a list of all GABRIELblocks files in the input file directory
 	Input_files_list = os.listdir(Input_file_directory)
 	for Input_file_name in Input_files_list:
 		Input_file_location = Input_file_directory + Input_file_name
@@ -18,17 +19,17 @@ for Gene_class_directory in Gene_class_directory_list:
 		Output_file.write(Header)
 		Input_file = open(Input_file_location,'r')
 		pop_name = Input_file_name [:3]
-#		pop_name = Input_file_name [:6]
+#Find gene name from input file name
 		find_dot_pos = Input_file_name.find('.')
 		gene_name = Input_file_name[4:find_dot_pos]
-
+#remove information about recombination
 		Input_file_data = Input_file.readlines()
 		length_list = len(Input_file_data)
 		for line in Input_file_data:
 			Recombination = line.startswith('Multiallelic')
 			if Recombination == True:
 				Input_file_data.remove(line)
-
+#Find lines with information about haplotype blocks
 		sublist_index_list = []
 		for line in Input_file_data:
 			if 'BLOCK' in line:
@@ -38,7 +39,7 @@ for Gene_class_directory in Gene_class_directory_list:
 		length_list1 = len(Input_file_data)	
 
 		sublist_index_list.append(length_list1)
-
+#Relate marker numbers in GABRIELblock file to marker positions in CHECK file
 		for i in range (0,len(sublist_index_list)-1):
 			j = i+1
 			Sublist = Input_file_data[sublist_index_list[i]:sublist_index_list[j]]
