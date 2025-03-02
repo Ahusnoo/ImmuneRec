@@ -1,10 +1,10 @@
 import os
 
-dir = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/Baylor_AFR/SNPDensity/output/'
+dir = '/SNPDensity/output/'
 g_list = os.listdir(dir)
 for g in g_list:
 	idir = dir + g + '/'
-	ofile_path = '/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/Baylor_AFR/SNPDensity/SNPDensityProcessing/'+ g + '_SNPCount.csv'
+	ofile_path = '/SNPDensityProcessing/'+ g + '_SNPCount.csv'
 	ofile = open(ofile_path,'w')
 	header = 'GeneName,SNPCount,Population\n'
 	ofile.write(header)
@@ -20,6 +20,7 @@ for g in g_list:
 		for line in i_file_data:
 			line_list = line.split('\t')
 			SNP = line_list[2]
+#Count number of SNPs in .freq file from VCFtools
 			if SNP == '1':
 				SNP_int = int(SNP)
 				SNP_count_list.append(SNP_int)
