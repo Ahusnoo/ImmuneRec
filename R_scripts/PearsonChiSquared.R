@@ -2,7 +2,7 @@ library("chisq.posthoc.test")
 
 Gene_class_list <- list('HighFreqHaplotype_SigDif.csv')
 for (Gene_class in Gene_class_list){
-	Gene_class_filepath <- paste('/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/MainPops/HaplotypeFreq/', Gene_class, sep = '')
+	Gene_class_filepath <- paste('/HaplotypeFreq/', Gene_class, sep = '')
 	Input_file <- read.csv(Gene_class_filepath, header = TRUE)
 	Input_dataframe <- Input_file[, c(4,6:10)]
 	for (row in 1:nrow(Input_dataframe)) {
@@ -30,7 +30,7 @@ for (Gene_class in Gene_class_list){
 	  Pvalue_AFRObserved <- AFR_values[2]
 	  Output_line <- c(Haplotype, AFR_freqfraction, AMR_freqfraction, EAS_freqfraction, EUR_freqfraction, SAS_freqfraction, Residual_AFRObserved, Pvalue_AFRObserved)
 	  Output_dataframe <- as.data.frame(Output_line)
-	  Output_file_name <- paste ('/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Merge_samples/MainPops/HaplotypeFreq/ChiSquared/', Row_Names, '.csv', sep='' )
+	  Output_file_name <- paste ('/ChiSquared/', Row_Names, '.csv', sep='' )
 	  write.csv(Output_dataframe, Output_file_name, row.names = FALSE)
   }
 }
