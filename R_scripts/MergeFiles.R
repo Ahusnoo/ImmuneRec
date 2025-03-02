@@ -1,6 +1,6 @@
 library(data.table)
 
-Gene_Class_list <- list('Chemokine_receptors','Hemopoietic_Cytokine_Receptors','Housekeeping_Genes','IFN_Receptors','IL_Receptors','LILRs','T_cell_receptor_AB_joining','T_cell_receptor_AB_variable','T_cell_receptor_DG_joining',''T_cell_receptor_DG_variable'','TGBFR','TLRs','TNFR')
+Gene_Class_list <- list('Chemokine_receptors','Hemopoietic_Cytokine_Receptors','Housekeeping_Genes','IFN_Receptors','IL_Receptors','LILRs','T_cell_receptor_AB_joining','T_cell_receptor_AB_variable','T_cell_receptor_DG_joining','T_cell_receptor_DG_variable','TGBFR','TLRs','TNFR')
 
 for (Gene_Class in Gene_Class_list){
 	input_file_directory = paste('/SNPDensity/', Gene_Class,sep='')
