@@ -3,7 +3,7 @@ library(PMCMRplus)
 library(rcompanion)
 library(readr)
 library(FSA)
-gene_class_list <- list ('Chemokine_receptors','Hemopoietic_Cytokine_Receptors','Housekeeping_Genes','IFN_Receptors','IL_Receptors','LILRs','T_cell_receptor_AB_joining','T_cell_receptor_AB_ variable','T_cell_receptor_DG_joining','T_cell_receptor_DG_variable','TGBFR','TLRs','TNFR')
+gene_class_list <- list ('Chemokine_receptors','Hemopoietic_Cytokine_Receptors','Housekeeping_Genes','IFN_Receptors','IL_Receptors','LILRs','T_cell_receptor_AB_joining','T_cell_receptor_AB_variable','T_cell_receptor_DG_joining','T_cell_receptor_DG_variable','TGBFR','TLRs','TNFR')
 for (gene_class in gene_class_list){
   input_file_path <- paste("/SNPDensity/",gene_class,"_SNPDensity_mainpops.csv",sep = "")
   df <- read.csv(input_file_path, header = TRUE)
