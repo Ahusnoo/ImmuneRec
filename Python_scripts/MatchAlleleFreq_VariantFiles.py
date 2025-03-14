@@ -1,10 +1,10 @@
-AlleleFreq_file = open('/home/ahusnoo/Documents/Aaisha/MPhil_PhD/AutoimmuneDiseases/PathogenicVariants_R2/AlleleFreq/All_AID_variants_shortDF_Subpops.csv','r')
+AlleleFreq_file = open('/AlleleFreq/All_AID_variants_shortDF_Subpops.csv','r')
 AF_readlines = AlleleFreq_file.readlines()
 
-Variant_List_File = open ('/home/ahusnoo/Documents/Aaisha/MPhil_PhD/AutoimmuneDiseases/PathogenicVariants_R2/AlleleFreq/SingleNucleotideVariant.csv','r')
+Variant_List_File = open ('/AlleleFreq/SingleNucleotideVariant.csv','r')
 VL_readlines = Variant_List_File.readlines()
 
-Output_file = open('/home/ahusnoo/Documents/Aaisha/MPhil_PhD/AutoimmuneDiseases/PathogenicVariants_R2/AlleleFreq/AlleleFreq_MatchedFile_Subpops.csv','w')
+Output_file = open('/AlleleFreq/AlleleFreq_MatchedFile_Subpops.csv','w')
 Header =  'Allele_ID	Chromosome	Position	Allele	BBC	BOT	BRN	BSZ	ESN	FNB	GWD	LWK	MAL	MSL	WGR	YRI	Mutation	Phenotype	Clinical Significance	rsID\n'
 Output_file.write(Header)
 
@@ -45,14 +45,6 @@ for l in AF_readlines:
 AlleleFreq_file.close()
 Variant_List_File.close()
 Output_file.close()
-
-
-
-
-
-
-
-
 
 
 
