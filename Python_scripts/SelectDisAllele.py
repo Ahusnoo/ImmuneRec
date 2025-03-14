@@ -1,5 +1,5 @@
-Input_file = open('/home/ahusnoo/Documents/Aaisha/MPhil_PhD/AutoimmuneDiseases/PathogenicVariants_R2/AlleleFreq/AlleleFreq_MatchedFile_Subpops.csv','r')
-Output_file = open('/home/ahusnoo/Documents/Aaisha/MPhil_PhD/AutoimmuneDiseases/PathogenicVariants_R2/AlleleFreq/AlleleFreq_DiseaseVariants_Subpops.csv','w')
+Input_file = open('/AlleleFreq/AlleleFreq_MatchedFile_Subpops.csv','r')
+Output_file = open('/AlleleFreq/AlleleFreq_DiseaseVariants_Subpops.csv','w')
 I_readlines = Input_file.readlines ()
 Header = I_readlines[0]
 Output_file.write(Header)
