@@ -2,8 +2,8 @@ import os
 import random
 
 # === CONFIGURATION ===
-input_folder = "/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Subsampling/R2/Populations/"       # Folder with 5 input files
-output_folder = "/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Subsampling/R2/Population_Subsamples/"       # Folder to save the 50 subsample files
+input_folder = "/Subsampling/R2/Populations/"       # Folder with 5 input files
+output_folder = "/Subsampling/R2/Population_Subsamples/"       # Folder to save the 50 subsample files
 n_subsamples = 50                 # Number of subsamples per input file
 subsample_size = 50               # Number of individuals per subsample
 
