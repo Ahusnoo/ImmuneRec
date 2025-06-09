@@ -1,42 +1,43 @@
 #!/bin/bash
 
-vcf_dir="/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Subsampling/R2/VCF_Subsamples"
-outdir="/home/ahusnoo/Documents/Aaisha/MPhil_PhD/GeneticDiversity/Subsampling/R2/SNPCount"
+# Set paths
+MAIN_DIR="/GeneticDiversity/Subsampling/R3/VCFs/recode"
+OUTPUT_DIR="/GeneticDiversity/Subsampling/R3/SNPCount"
 
-mkdir -p "$outdir"
+mkdir -p "$OUTPUT_DIR"
 
-# Initialize CSVs
-for pop in ESN GWD LWK MSL YRI; do
-    echo "filename,snp_count" > "${outdir}/${pop}_snp_counts.csv"
-done
+# Loop over each subfolder
+for subfolder in "$MAIN_DIR"/*/; do
+    subfolder_name=$(basename "$subfolder")
 
-# Loop over VCFs in the specified directory
-for vcf in "$vcf_dir"/*.vcf.gz; do
-    [[ -e "$vcf" ]] || continue
+    # Loop over each subsubfolder
+    for subsubfolder in "$subfolder"*/; do
+        subsubfolder_name=$(basename "$subsubfolder")
+        output_file="$OUTPUT_DIR/${subfolder_name}_${subsubfolder_name}_snp_counts.csv"
 
-    echo "Processing $vcf..."
+        # Start a fresh output file
+        > "$output_file"
 
-    prefix=$(basename "$vcf" | cut -d'_' -f1)
+        # Process each VCF file
+        for vcf in "$subsubfolder"/*.vcf; do  # note: changed from .vcf.gz to .vcf
+            [ -e "$vcf" ] || continue  # Skip if no files
 
-    case $prefix in
-        ESN|GWD|LWK|MSL|YRI)
-            # Count SNPs where at least one sample has a 1 (alternate allele)
-            snp_count=$(zcat "$vcf" | awk '
+            snp_count=$(cat "$vcf" | awk '
                 BEGIN { count = 0 }
                 $0 !~ /^#/ {
                     for (i = 10; i <= NF; i++) {
-                        if ($i ~ /1/) {
+                        split($i, a, ":")
+                        if (a[1] ~ /1/) {
                             count++
-                            next  # move to next line after first match
+                            break
                         }
                     }
                 }
                 END { print count }
             ')
-            echo "$(basename "$vcf"),${snp_count}" >> "${outdir}/${prefix}_snp_counts.csv"
-            ;;
-        *)
-            echo "Skipping: $vcf (prefix not recognized)"
-            ;;
-    esac
+            
+            vcf_filename=$(basename "$vcf")
+            echo -e "$vcf_filename\t$snp_count" >> "$output_file"
+        done
+    done
 done
