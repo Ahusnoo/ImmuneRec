@@ -3,7 +3,7 @@ library(ggrepel)
 
 # Read CSV
 data <- read.csv(
-  "/home/ahusnoo/Documents/Aaisha/MPhil_PhD/FinalThesisCorrections/HaplotypeDiversity/Mainpops_SNPDensity_HDiv_normalised.csv",
+  "Mainpops_SNPDensity_HDiv.csv",
   sep = ",", header = TRUE
 )
 
@@ -50,7 +50,7 @@ print(p)
 
 # Save image
 ggsave(
-  filename = "/home/ahusnoo/Documents/Aaisha/MPhil_PhD/FinalThesisCorrections/HaplotypeDiversity/plot_HD_vs_SNP.jpg",
+  filename = "plot_HD_vs_SNP.jpg",
   plot = p,
   width = 8, height = 6, dpi = 300
 )
