@@ -1,11 +1,9 @@
-# Libraries
 library(ggplot2)
 library(dplyr)
 library(ggrepel)
 
-# Read data
 df <- read.csv(
-  "/home/ahusnoo/Documents/Aaisha/MPhil_PhD/FinalThesisCorrections/Obs_Exp_Genetic Diversity/Obs_Exp_Standardise.csv",
+  "Obs_Exp_Standardise.csv",
   stringsAsFactors = FALSE
 )
 
@@ -171,4 +169,3 @@ scale_colour_manual(
     legend.position = "right",
     plot.title = element_text(hjust = 0.5)
   )
-
