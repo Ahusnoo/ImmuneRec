@@ -1,12 +1,6 @@
-df <- data.frame(
-  Gene = c("TLR4","TLR6","CCR2","IL4R","IL4R","IL1RL1","CSF3R"),
-  rsID = c(4986790,5743810,1799864,1805010,1801275,4988958,121918426),
-  AFR = c(91.6,99.7,17.6,47.3,80.6,78,0.7),
-  AMR = c(96.3,81.7,21.2,42.5,32.1,28.5,0),
-  EUR = c(94.3,59.2,8.6,42.5,20.8,40.5,0),
-  EAS = c(0,100,21.3,51.6,16.6,12.5,0),
-  SAS = c(87.4,98.3,9.8,41.6,23.9,20.6,0)
-)
+#Read input CSV file
+input_file <- "allele_frequencies.csv"
+df <- read.csv(input_file, header = TRUE, stringsAsFactors = FALSE)
 
 # Sample sizes (diploid)
 sample_sizes <- c(
